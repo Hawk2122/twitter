@@ -1,0 +1,15 @@
+@use 'variables.scss';
+
+.theme{
+  @include variables.theme(false);
+}
+body{
+  font-family: Roboto, Arial;
+  display: flex;
+  justify-content: center;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

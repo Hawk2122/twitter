@@ -1,0 +1,152 @@
+@use "resets.scss";
+@use "variables.scss";
+@use "general.scss";
+
+%flex {
+  display: flex;
+}
+
+main {
+  @extend %flex;
+  width: variables.$main-width;
+  height: 100vh;
+  background-color: gray;
+  border: 5px solid white;
+}
+
+.div-left_section {
+  flex: 1 1 25%;
+  background-color: lightpink;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  row-gap: 20px;
+
+  .div-left_section_logo {
+    img {
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+    }
+
+    padding-left: 10px;
+  }
+
+  .div-left_section_tile {
+    img {
+      display: flex;
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      background-color: rgb(41, 41, 41);
+    }
+
+    &:active {
+      opacity: 0.9;
+    }
+
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    column-gap: 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.2s, opacity 0.2s;
+  }
+
+  .div-left_section_btn_container {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+  }
+  button {
+    &:hover {
+      transform: scale(0.98);
+    }
+    &:active {
+      background-color: variables.$secondary_color;
+      color: white;
+      transform: scale(0.92);
+    }
+
+    background-color: white;
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    padding: 1rem;
+    width: 90%;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s, color 0.2s;
+  }
+
+  &_profile {
+    img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 2rem;
+    }
+    &_avatar {
+      display: flex;
+    }
+    &_info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      row-gap: 5px;
+    }
+    &_popup {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      position: absolute;
+      top: -6rem;
+      border-radius: 1rem;
+      padding: 1rem;
+      background-color: rgb(92, 92, 92);
+      transition: opacity 0.2s, transition-delay 0.2s;
+      transition-delay: 0.2s;
+      opacity: 0;
+     
+      &_text1,&_text2{
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+       &:hover{
+        background-color: rgb(110, 110, 110);
+       }
+      }
+     
+    }
+    &:hover &_popup {
+      opacity: 1;
+    }
+    &:hover {
+      background-color: rgb(59, 59, 59);
+    }
+
+    display: flex;
+    position: relative;
+    margin-top: auto;
+    align-items: center;
+    column-gap: 10px;
+    width: 100%;
+    transition: background-color 0.2s, opacity 0.2s;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+  }
+}
+
+.div-middle_section {
+  flex: 1 1 50%;
+  background-color: lightblue;
+}
+
+.div-right_section {
+  flex: 1 1 25%;
+  background-color: lightgreen;
+}
