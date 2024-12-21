@@ -1,0 +1,16 @@
+$primary_color:black;
+$secondary_color:rgb(29, 155, 240);
+$text_color:white;
+
+$main-width:1250px;
+
+@mixin theme($light_theme:true){
+  @if($light_theme){
+    background: lighten($primary_color,100%);
+    color: darken($text_color,100%) ;
+  }
+  @else{
+    background: darken($primary_color,100%);
+    color: lighten($text_color,100%);
+  }
+}
