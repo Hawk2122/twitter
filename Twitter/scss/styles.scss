@@ -9,7 +9,7 @@
 main {
   @extend %flex;
   width: variables.$main-width;
-  height: 100dvh;
+  height: 100vh;
   border: 5px solid rgb(255, 0, 0);
 }
 
