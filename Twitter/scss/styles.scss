@@ -9,30 +9,65 @@
 main {
   @extend %flex;
   width: variables.$main-width;
-  height: 100vh;
-  background-color: gray;
-  border: 5px solid white;
+  height: 100dvh;
+  border: 5px solid rgb(255, 0, 0);
 }
 
 .div-left_section {
   flex: 1 1 25%;
-  background-color: lightpink;
   display: flex;
   flex-direction: column;
   align-content: flex-start;
-  row-gap: 20px;
+  row-gap: 10px;
+  border: 1px solid rgb(201, 201, 201);
 
-  .div-left_section_logo {
-    img {
-      border-radius: 50%;
-      height: 40px;
-      width: 40px;
+  &_logo {
+    padding-left: 5px;
+    margin-bottom: 7px;
+    &_container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 0.4rem;
+      transition: background-color 0.2s, border-radius 0.3s;
+      img {
+        display: flex;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+      }
+
+      &:hover {
+        background-color: variables.$hover;
+      }
+
+      &:active {
+        border-radius: 50%;
+      }
     }
-
-    padding-left: 10px;
   }
 
-  .div-left_section_tile {
+  &_tile {
+    display: flex;
+    align-items: center;
+    row-gap: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    flex: 1 0 50px;
+    max-height: 60px;
+
+    &_wrap {
+      display: flex;
+      align-items: center;
+      column-gap: 15px;
+      padding: 10px 25px 10px 10px;
+      border-radius: 2rem;
+      transition: background-color 0.2s, opacity 0.2s, border-radius 0.4s;
+      overflow: hidden;
+    }
     img {
       display: flex;
       height: 2.5rem;
@@ -40,94 +75,50 @@ main {
       border-radius: 50%;
     }
 
-    &:hover {
-      background-color: rgb(41, 41, 41);
+    &:hover &_wrap {
+      background-color: variables.$hover;
     }
 
-    &:active {
+    &:active &_wrap {
       opacity: 0.9;
+      border-radius: 1.2em;
+      transform: translateY(1.5%);
     }
-
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    column-gap: 15px;
-    border-radius: 30px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: background-color 0.2s, opacity 0.2s;
   }
 
-  .div-left_section_btn_container {
+  &_btn_container {
+    margin-top: 10px;
     display: flex;
     justify-content: center;
-    width: 90%;
-  }
-  button {
-    &:hover {
-      transform: scale(0.98);
-    }
-    &:active {
-      background-color: variables.$secondary_color;
-      color: white;
-      transform: scale(0.92);
-    }
+    width: 100%;
 
-    background-color: white;
-    color: rgb(0, 0, 0);
-    font-weight: 700;
-    padding: 1rem;
-    width: 90%;
-    border: none;
-    border-radius: 2rem;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s, color 0.2s;
+    button {
+      background-color: white;
+      color: rgb(0, 0, 0);
+      font-weight: 900;
+      font-size: 1rem;
+      padding: 1rem;
+      width: 85%;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s, color 0.2s,
+        border-radius 0.4s;
+
+      &:hover {
+        transform: scale(0.98);
+      }
+
+      &:active {
+        background-color: variables.$secondary_color;
+        color: white;
+        transform: scale(0.92);
+        border-radius: 1em;
+      }
+    }
   }
 
   &_profile {
-    img {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 2rem;
-    }
-    &_avatar {
-      display: flex;
-    }
-    &_info {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      row-gap: 5px;
-    }
-    &_popup {
-      display: flex;
-      flex-direction: column;
-      row-gap: 10px;
-      position: absolute;
-      top: -6rem;
-      border-radius: 1rem;
-      padding: 1rem;
-      background-color: rgb(92, 92, 92);
-      transition: opacity 0.2s, transition-delay 0.2s;
-      transition-delay: 0.2s;
-      opacity: 0;
-     
-      &_text1,&_text2{
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-       &:hover{
-        background-color: rgb(110, 110, 110);
-       }
-      }
-     
-    }
-    &:hover &_popup {
-      opacity: 1;
-    }
-    &:hover {
-      background-color: rgb(59, 59, 59);
-    }
-
     display: flex;
     position: relative;
     margin-top: auto;
@@ -138,15 +129,213 @@ main {
     padding: 0.5rem;
     border-radius: 2rem;
     cursor: pointer;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 2rem;
+    }
+
+    &_avatar {
+      display: flex;
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      row-gap: 5px;
+    }
+
+    &_popup {
+      flex-direction: column;
+      row-gap: 10px;
+      position: absolute;
+      top: -6rem;
+      border-radius: 1rem;
+      padding: 1rem;
+      background-color: rgb(92, 92, 92);
+      display: none;
+
+      &_text1,
+      &_text2 {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: variables.$hover2;
+        }
+
+        &:active {
+          transform: scale(1.02);
+        }
+      }
+    }
+
+    &:hover &_popup {
+      display: flex;
+    }
+
+    &:hover {
+      background-color: rgb(59, 59, 59);
+    }
+
+    &:active {
+      opacity: 0.9;
+    }
   }
 }
 
 .div-middle_section {
   flex: 1 1 50%;
-  background-color: lightblue;
+  position: relative;
+
+  border: 1px solid rgb(201, 201, 201);
+
+  &_top_panel {
+    display: flex;
+    position: sticky;
+    left: 0;
+    top: 0;
+    right: 0;
+
+    &_text1,
+    &_text2 {
+      flex: 1;
+      background-color: variables.$hover;
+      position: relative;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.4s, opacity 0.2s;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: variables.$secondary_color;
+        height: 3px;
+        width: 0;
+        transition: ease-in-out 0.2s;
+      }
+      &:hover::after {
+        width: 40%;
+      }
+
+      &:active::after {
+        width: 100%;
+      }
+
+      &:active {
+        opacity: 0.95;
+      }
+
+      &:hover {
+        background-color: rgb(49, 49, 49);
+      }
+    }
+  }
+
+  &_post {
+    display: flex;
+    column-gap: 0.5rem;
+    padding: 1.25rem 1.25rem 0.25rem 1.25rem;
+    border-top: 0.5px solid variables.$border;
+    border-bottom: 0.5px solid variables.$border;
+
+    &_left {
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      img {
+        display: flex;
+        height: 44px;
+        width: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.95;
+        }
+      }
+    }
+    &_right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      &_top {
+        #input-post_search {
+          border: none;
+          color: white;
+          background-color: variables.$primary_color;
+          font-size: 1rem;
+          font-weight: 400;
+          padding: 0.6rem;
+          &:active,
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      &_bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 0.5px solid variables.$border;
+        padding: 10px;
+        column-gap: 10px;
+        &_left {
+          display: flex;
+          column-gap: 10px;
+          &_img_cont {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            transition: background-color 0.25s;
+            img {
+              display: flex;
+              height: 15px;
+              width: 15px;
+            }
+            &:hover {
+              background-color: variables.$hover;
+            }
+          }
+        }
+        &_right {
+          display: flex;
+          flex: 1 0 auto;
+          justify-content: flex-end;
+          button {
+            padding: 10px 15px 10px 15px;
+            border-radius: 2rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, color 0.5s, background-color 0.5s,
+              border 0.5s;
+            &:active {
+              transform: scale(0.95);
+              background-color: variables.$secondary_color;
+              color: variables.$text_color;
+              border: 1px solid variables.$text_color;
+              margin-top: -1px;
+              margin-bottom: -1px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .div-right_section {
   flex: 1 1 25%;
-  background-color: lightpink;
+  background-color: lightcoral;
+  border: 1px solid rgb(201, 201, 201);
 }
