@@ -10,7 +10,7 @@ main {
   @extend %flex;
   width: variables.$main-width;
   height: 100dvh;
-  border: 5px solid rgb(255, 0, 0);
+  border: 1px solid rgb(255, 0, 0);
 }
 
 .div-left_section {
@@ -19,7 +19,7 @@ main {
   flex-direction: column;
   align-content: flex-start;
   row-gap: 10px;
-  border: 1px solid rgb(201, 201, 201);
+  height: 100dvh;
 
   &_logo {
     padding-left: 5px;
@@ -63,15 +63,15 @@ main {
       display: flex;
       align-items: center;
       column-gap: 15px;
-      padding: 10px 25px 10px 10px;
+      padding: 12px 25px 12px 10px;
       border-radius: 2rem;
       transition: background-color 0.2s, opacity 0.2s, border-radius 0.4s;
       overflow: hidden;
     }
     img {
       display: flex;
-      height: 2.5rem;
-      width: 2.5rem;
+      height: 25px;
+      width: 25px;
       border-radius: 50%;
     }
 
@@ -188,10 +188,13 @@ main {
 }
 
 .div-middle_section {
-  flex: 1 1 50%;
+  flex: 1 1 70%;
   position: relative;
-
-  border: 1px solid rgb(201, 201, 201);
+  border-bottom: 0.01px solid variables.$border;
+  border-left: 0.01px solid variables.$border;
+  border-right: 0.01px solid variables.$border;
+  min-height: 100dvh;
+  overflow-y: auto;
 
   &_top_panel {
     display: flex;
@@ -199,11 +202,13 @@ main {
     left: 0;
     top: 0;
     right: 0;
+    border-bottom: 0.01px solid variables.$border;
 
     &_text1,
     &_text2 {
       flex: 1;
-      background-color: variables.$hover;
+      background-color: variables.$primary_color;
+      opacity: 0.8;
       position: relative;
       text-align: center;
       cursor: pointer;
@@ -242,8 +247,7 @@ main {
     display: flex;
     column-gap: 0.5rem;
     padding: 1.25rem 1.25rem 0.25rem 1.25rem;
-    border-top: 0.5px solid variables.$border;
-    border-bottom: 0.5px solid variables.$border;
+    border-bottom: 0.01px solid variables.$border;
 
     &_left {
       width: 50px;
@@ -252,8 +256,8 @@ main {
       align-items: flex-start;
       img {
         display: flex;
-        height: 44px;
-        width: 44px;
+        height: 40px;
+        width: 40px;
         border-radius: 50%;
         cursor: pointer;
         &:hover {
@@ -284,7 +288,7 @@ main {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-top: 0.5px solid variables.$border;
+        border-top: 0.01px solid variables.$border;
         padding: 10px;
         column-gap: 10px;
         &_left {
@@ -323,9 +327,118 @@ main {
               transform: scale(0.95);
               background-color: variables.$secondary_color;
               color: variables.$text_color;
-              border: 1px solid variables.$text_color;
-              margin-top: -1px;
-              margin-bottom: -1px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_publication {
+    display: flex;
+    padding: 15px;
+    column-gap: 10px;
+    border-bottom: 0.1px solid variables.$border;
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+    &:hover {
+      box-shadow: inset 0 10px 100px rgb(36, 36, 36);
+    }
+    &:active video {
+      box-shadow: 0px 0px 20px rgb(61, 61, 61);
+    }
+    &_left {
+      &_avatar {
+        img {
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+        }
+      }
+    }
+    &_right {
+      &_account_info {
+        margin-bottom: 5px;
+      }
+      video {
+        border-radius: 1rem;
+        border: 0.1px solid variables.$border;
+        transition: box-shadow 0.2s;
+        transition-duration: 0.5s;
+      }
+      &_stats {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        &_part {
+          display: flex;
+          align-items: center;
+          column-gap: 5px;
+          &:hover &_left_image_cont1 {
+            background-color: variables.$secondary_color;
+          }
+          &:hover &_left_image_cont2 {
+            background-color: variables.$hover3;
+          }
+          &:hover &_left_image_cont3 {
+            background-color: variables.$hover4;
+          }
+          &:hover &_left_image_cont4 {
+            background-color: variables.$hover5;
+          }
+          &:hover &_right .small-1 {
+            color: variables.$secondary_color;
+          }
+          &:hover &_right .small-2 {
+            color: variables.$hover3;
+          }
+          &:hover &_right .small-3 {
+            color: variables.$hover4;
+          }
+          &:hover &_right .small-4 {
+            color: variables.$hover5;
+          }
+          &_left {
+            display: flex;
+            transition: background-color 0.2s;
+            &_image_cont1,
+            &_image_cont2,
+            &_image_cont3,
+            &_image_cont4 {
+              border-radius: 50%;
+              transition: background-color 0.2s;
+            }
+            img {
+              display: flex;
+              height: 1.5rem;
+              width: 1.5rem;
+              padding: 5px;
+            }
+          }
+          &_right {
+            display: flex;
+            small {
+              color: variables.$text_color2;
+              font-family: Roboto, Arial;
+              transition: color 0.2s;
+            }
+          }
+        }
+        &_rest {
+          display: flex;
+          column-gap: 5px;
+
+          &_image_cont {
+            border-radius: 50%;
+            transition: background-color 0.2s;
+            &:hover {
+              background-color: variables.$secondary_color;
+            }
+            img {
+              display: flex;
+              height: 1.5rem;
+              width: 1.5rem;
+              padding: 5px;
             }
           }
         }
@@ -337,5 +450,5 @@ main {
 .div-right_section {
   flex: 1 1 25%;
   background-color: lightcoral;
-  border: 1px solid rgb(201, 201, 201);
+  height: 100dvh;
 }

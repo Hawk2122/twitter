@@ -1,5 +1,5 @@
 //LEFT SECTION STYLES
-
+@use 'variables.scss';
 .p-tile_text{
   font-weight: 500;
   font-size: 1.2rem;
@@ -22,3 +22,17 @@
   font-family: Roboto,Arial;
   font-weight: 700;
 }
+  //publication
+  .p-middle_pub_text{
+  font-size: 0.97rem;
+  margin-bottom: 10px;
+  }
+  .small-account{
+    font-weight: 900;
+  }
+  .small-account_tag{
+    color: variables.$text_color2;
+  }
+  .small-account_stats{
+    color: variables.$text_color2;
+  }
